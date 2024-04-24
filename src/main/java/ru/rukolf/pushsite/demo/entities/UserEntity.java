@@ -26,6 +26,9 @@ public class UserEntity {
     private String surname;
     private String patronymic;
     @NotNull
+    @Pattern(regexp = "^[a-zA-Z0-9_]{3,15}$")
+    private String username;
+    @NotNull
     @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-zA-Z]).{8,}$")
     private String password;
 }
