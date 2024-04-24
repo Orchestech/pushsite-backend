@@ -1,5 +1,7 @@
 package ru.rukolf.pushsite.demo.controllers;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -14,8 +16,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import ru.rukolf.pushsite.demo.entities.UserEntity;
 import ru.rukolf.pushsite.demo.repositories.UserRepository;
 import ru.rukolf.pushsite.demo.responses.UserResponse;
-
-import com.google.gson.Gson;
 
 @RestController
 @RequestMapping("/api")
@@ -46,7 +46,11 @@ public class UserController {
         userResponse.setSurname(userEntity.getSurname());
         userResponse.setPatronymic(userEntity.getPatronymic());
         userResponse.setUsername(userEntity.getUsername());
-        userResponse.setRoles(userEntity.getRoles());
+
+        List<String> roles = new ArrayList<>();
+        userEntity.getRoles().forEach(role -> roles.add(role.getTitle()));
+
+        userResponse.setRoles(roles);
 
         ObjectMapper objectMapper = new ObjectMapper();
         return ResponseEntity.ok(objectMapper.writeValueAsString(userResponse));
@@ -61,7 +65,11 @@ public class UserController {
         userResponse.setSurname(userEntity.getSurname());
         userResponse.setPatronymic(userEntity.getPatronymic());
         userResponse.setUsername(userEntity.getUsername());
-        userResponse.setRoles(userEntity.getRoles());
+        
+        List<String> roles = new ArrayList<>();
+        userEntity.getRoles().forEach(role -> roles.add(role.getTitle()));
+
+        userResponse.setRoles(roles);
 
         ObjectMapper objectMapper = new ObjectMapper();
         return ResponseEntity.ok(objectMapper.writeValueAsString(userResponse));

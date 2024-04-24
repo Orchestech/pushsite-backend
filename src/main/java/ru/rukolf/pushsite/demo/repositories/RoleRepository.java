@@ -10,9 +10,11 @@ import ru.rukolf.pushsite.demo.entities.RoleEntity;
 @Repository
 public interface RoleRepository extends JpaRepository<RoleEntity, Long> {
     
+    @SuppressWarnings("null")
     Optional<RoleEntity> findById(Long id);
     Optional<RoleEntity> findByTitle(String title);
     List<RoleEntity> findAllByOperator(Boolean operator);
+    List<RoleEntity> findAllByInternal(Boolean internal);
     List<RoleEntity> findAll();
 
 }

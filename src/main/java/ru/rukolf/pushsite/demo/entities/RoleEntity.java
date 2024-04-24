@@ -22,6 +22,6 @@ public class RoleEntity {
     @Pattern(regexp = "^(?=.*[a-z]).+$")
     @Column(unique = true)
     private String title;
-
     private Boolean operator;
+    private Boolean internal;
 }
