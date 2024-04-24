@@ -10,8 +10,8 @@ import ru.rukolf.pushsite.demo.entities.UserEntity;
 @Repository
 public interface UserRepository extends JpaRepository<UserEntity, Long> {
     
-    Optional<UserEntity> findUserById(Long id);
-    Optional<UserEntity> findUserByUsername(String username);
-    Optional<List<UserEntity>> findAllByRole(String role);
+    Optional<UserEntity> findById(Long id);
+    Optional<UserEntity> findByUsername(String username);
+    Optional<List<UserEntity>> findAllByRoles(List<String> roles);
 
 }

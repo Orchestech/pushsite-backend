@@ -1,5 +1,7 @@
 package ru.rukolf.pushsite.demo.entities;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,7 +21,7 @@ public class UserEntity {
     private Long id;
 
     @OneToMany
-    private RoleEntity role;
+    private List<RoleEntity> roles;
     @NotNull
     private String name;
     @NotNull
